@@ -30,6 +30,19 @@
             padding: 0;
         }
 
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -4;
+            opacity: 0.8;
+            filter: brightness(1.1) saturate(1.2);
+            -webkit-filter: brightness(1.1) saturate(1.2);
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -38,9 +51,10 @@
             width: 100%;
             height: 100%;
             background: #ff1744;
-            background-image: linear-gradient(135deg, #ff0844 0%, #ff1744 20%, #ff4569 40%, #e91e63 60%, #c2185b 80%, #ff0066 100%);
+            background-image: linear-gradient(135deg, rgba(255, 8, 68, 0.3) 0%, rgba(255, 23, 68, 0.3) 20%, rgba(255, 69, 105, 0.2) 40%, rgba(233, 30, 99, 0.2) 60%, rgba(194, 24, 91, 0.3) 80%, rgba(255, 0, 102, 0.3) 100%);
             pointer-events: none;
             z-index: -3;
+            opacity: 0.5;
         }
 
         body::after {
@@ -51,9 +65,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 105, 180, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(255, 0, 102, 0.3) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(255, 105, 180, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 0, 102, 0.15) 0%, transparent 50%);
             animation: floatingGlow 8s ease-in-out infinite;
             -webkit-animation: floatingGlow 8s ease-in-out infinite;
             pointer-events: none;
@@ -980,6 +994,12 @@
 </head>
 <body>
     <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline id="bgVideo" class="video-background">
+        <source src="background-video.mp4" type="video/mp4">
+        <source src="background-video.webm" type="video/webm">
+    </video>
     
     <!-- Photo Modal -->
     <div id="photoModal" class="photo-modal">
