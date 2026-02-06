@@ -13,8 +13,12 @@
 
         body {
             font-family: 'Georgia', serif;
+            background: #ff6b9d;
+            background: -webkit-linear-gradient(45deg, #ff6b9d, #ff8e9b, #ffa8a8, #c2185b, #e91e63);
+            background: -moz-linear-gradient(45deg, #ff6b9d, #ff8e9b, #ffa8a8, #c2185b, #e91e63);
             background: linear-gradient(45deg, #ff6b9d, #ff8e9b, #ffa8a8, #c2185b, #e91e63);
             background-size: 400% 400%;
+            -webkit-animation: gradientShift 8s ease infinite;
             animation: gradientShift 8s ease infinite;
             min-height: 100vh;
             display: flex;
@@ -44,6 +48,7 @@
             padding: 2rem;
             background: rgba(255, 255, 255, 0.15);
             border-radius: 30px;
+            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             max-width: 700px;
@@ -61,6 +66,7 @@
             width: 200%;
             height: 200%;
             background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            -webkit-animation: shimmer 3s ease-in-out infinite;
             animation: shimmer 3s ease-in-out infinite;
             pointer-events: none;
         }
@@ -461,19 +467,43 @@
             100% { background-position: 0% 50%; }
         }
 
+        @-webkit-keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         @keyframes shimmer {
             0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @-webkit-keyframes shimmer {
+            0% { -webkit-transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { -webkit-transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         @keyframes titleGlow {
             0%, 100% { 
                 text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.5);
                 transform: scale(1);
+                -webkit-transform: scale(1);
             }
             50% { 
                 text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.8);
                 transform: scale(1.02);
+                -webkit-transform: scale(1.02);
+            }
+        }
+
+        @-webkit-keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.5);
+                -webkit-transform: scale(1);
+            }
+            50% { 
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.8);
+                -webkit-transform: scale(1.02);
             }
         }
 
