@@ -23,6 +23,8 @@
             justify-content: center;
             overflow-x: hidden;
             position: relative;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         body::before {
@@ -157,6 +159,8 @@
             box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
             position: relative;
             overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .answer-btn::before {
@@ -228,6 +232,8 @@
             position: relative;
             overflow: hidden;
             font-weight: bold;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .final-button::before {
@@ -543,11 +549,153 @@
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            body {
+                padding: 1rem;
             }
-            .message {
+
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .heart {
+                font-size: 1.5rem;
+            }
+
+            .greeting {
+                font-size: 1.5rem !important;
+            }
+
+            .confession {
+                font-size: 1rem !important;
+            }
+
+            .teaser {
+                font-size: 1.1rem !important;
+            }
+
+            .questions-section {
+                padding: 1rem;
+            }
+
+            .questions-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .question {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+
+            .question p {
+                font-size: 1rem !important;
+            }
+
+            .answer-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .final-question {
+                padding: 1.5rem;
+            }
+
+            .final-question h2 {
+                font-size: 1.5rem !important;
+            }
+
+            .final-question h3 {
+                font-size: 1.4rem !important;
+            }
+
+            .final-text {
+                font-size: 1rem !important;
+            }
+
+            .final-button {
+                padding: 1rem 2rem;
                 font-size: 1.2rem;
+                margin: 0.5rem;
+            }
+
+            .no-button {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+                margin: 0.5rem;
+            }
+
+            .no-button:hover::after {
+                font-size: 0.8rem;
+                top: -45px;
+                white-space: normal;
+                max-width: 200px;
+            }
+
+            .cheeky-note {
+                font-size: 0.9rem;
+            }
+
+            .floating-heart {
+                font-size: 1.2rem !important;
+            }
+
+            #response {
+                font-size: 1rem !important;
+            }
+
+            #response > div {
+                font-size: 1.5rem !important;
+            }
+
+            #response > div:first-child {
+                font-size: 2rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .greeting {
+                font-size: 1.3rem !important;
+            }
+
+            .confession {
+                font-size: 0.95rem !important;
+            }
+
+            .questions-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .question p {
+                font-size: 0.95rem !important;
+            }
+
+            .answer-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .final-button {
+                padding: 0.9rem 1.8rem;
+                font-size: 1.1rem;
+            }
+
+            .no-button {
+                padding: 0.9rem 1.8rem;
+                font-size: 1.1rem;
+            }
+
+            .final-question h3 {
+                font-size: 1.2rem !important;
             }
         }
     </style>
