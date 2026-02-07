@@ -407,6 +407,7 @@
             padding-top: 100%;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
 
         .photo-wrapper img {
@@ -418,12 +419,19 @@
             object-fit: cover;
             cursor: pointer;
             transition: all 0.4s ease;
+            filter: blur(20px) brightness(0.5);
+            -webkit-filter: blur(20px) brightness(0.5);
         }
 
         .photo-wrapper:hover img {
-            transform: scale(1.1);
-            filter: brightness(1.1);
-            -webkit-filter: brightness(1.1);
+            transform: scale(1.05);
+            filter: blur(0px) brightness(1);
+            -webkit-filter: blur(0px) brightness(1);
+        }
+
+        .photo-wrapper.revealed img {
+            filter: blur(0px) brightness(1);
+            -webkit-filter: blur(0px) brightness(1);
         }
 
         .photo-overlay {
@@ -432,16 +440,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 0, 102, 0.8);
+            background: rgba(255, 0, 102, 0.9);
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
+            opacity: 1;
             transition: opacity 0.3s ease;
         }
 
         .photo-wrapper:hover .photo-overlay {
-            opacity: 1;
+            opacity: 0.95;
+        }
+
+        .photo-wrapper.revealed .photo-overlay {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .view-text {
@@ -1024,8 +1037,8 @@
             <h2 class="gallery-title">💕 Our Beautiful Moments Together</h2>
             <div class="photo-grid">
                 <div class="photo-card">
-                    <div class="photo-wrapper">
-                        <img src="photo1.jpg" alt="Our memory 1" onclick="openPhotoModal(this)">
+                    <div class="photo-wrapper" onclick="openPhotoModal(this.querySelector('img'))">
+                        <img src="photo1.jpg" alt="Our memory 1">
                         <div class="photo-overlay">
                             <span class="view-text">Click to view 💖</span>
                         </div>
@@ -1034,8 +1047,8 @@
                 </div>
                 
                 <div class="photo-card">
-                    <div class="photo-wrapper">
-                        <img src="photo2.jpg" alt="Our memory 2" onclick="openPhotoModal(this)">
+                    <div class="photo-wrapper" onclick="openPhotoModal(this.querySelector('img'))">
+                        <img src="photo2.jpg" alt="Our memory 2">
                         <div class="photo-overlay">
                             <span class="view-text">Click to view 💖</span>
                         </div>
@@ -1044,8 +1057,8 @@
                 </div>
                 
                 <div class="photo-card">
-                    <div class="photo-wrapper">
-                        <img src="photo3.jpg" alt="Our memory 3" onclick="openPhotoModal(this)">
+                    <div class="photo-wrapper" onclick="openPhotoModal(this.querySelector('img'))">
+                        <img src="photo3.jpg" alt="Our memory 3">
                         <div class="photo-overlay">
                             <span class="view-text">Click to view 💖</span>
                         </div>
@@ -1054,8 +1067,8 @@
                 </div>
                 
                 <div class="photo-card">
-                    <div class="photo-wrapper">
-                        <img src="photo4.jpg" alt="Our memory 4" onclick="openPhotoModal(this)">
+                    <div class="photo-wrapper" onclick="openPhotoModal(this.querySelector('img'))">
+                        <img src="photo4.jpg" alt="Our memory 4">
                         <div class="photo-overlay">
                             <span class="view-text">Click to view 💖</span>
                         </div>
@@ -1189,7 +1202,7 @@
                     You just made me the happiest person alive! 💖💖💖
                 </div>
                 <div style="font-size: 1.3rem; color: #fff; margin: 1rem 0; animation: slideInUp 0.7s ease;">
-                   My forever Valentine bajpayi ji ! 🌹✨
+                    Get ready for the most amazing Valentine's Day ever! 🌹✨
                 </div>
                 <div style="font-size: 1.1rem; color: #ffeb3b; margin: 2rem 0; font-style: italic; animation: slideInUp 0.9s ease;">
                     I love you more than words can express! 💕
@@ -1236,6 +1249,9 @@
 
         // Photo modal functions
         function openPhotoModal(img) {
+            const wrapper = img.closest('.photo-wrapper');
+            wrapper.classList.add('revealed');
+            
             const modal = document.getElementById('photoModal');
             const modalImg = document.getElementById('modalPhoto');
             modal.style.display = 'block';
